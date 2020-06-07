@@ -77,11 +77,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "eslintConfig": {
-    "space-before-function-paren": [
-      "never"
-    ],
-    "rules": {}
-  }
+  ]
 }
