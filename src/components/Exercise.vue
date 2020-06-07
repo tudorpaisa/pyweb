@@ -1,32 +1,51 @@
 <template>
   <div>
-    <h1>Page: {{id}}</h1>
-    <div id='readme' v-html='readme'></div>
-    <div id='code'>
-      <PrismEditor
-        class='code'
-        v-model='code'
-        :code='code'
-        language='python'
-        :line-numbers='lineNumbers'
-      ></PrismEditor>
-    </div>
-    <button v-on:click='runCode()'>Run Code</button>
-    <div id='output'>
-      <PrismEditor :code='output' language='py'></PrismEditor>
-    </div>
+    <v-row align='center' justify='center'>
+      <v-col class='text-center'>
+        <div id='readme' v-html='readme'></div>
+        <div id='code'>
+          <v-row>
+            <v-col class='text-left'>
+              <MonacoEditor
+                v-model='code'
+                height='300'
+                :code='code'
+                theme='vs-dark'
+                :options='options'
+                language='python'
+              ></MonacoEditor>
+            </v-col>
+          </v-row>
+        </div>
+        <v-btn v-on:click='runCode()'>Run Code</v-btn>
+        <div id='output'>
+          <v-row>
+            <v-col class='text-left'>
+              <MonacoEditor
+                v-model='output'
+                height='300'
+                :code='output'
+                theme='vs-dark'
+                language='python'
+              ></MonacoEditor>
+            </v-col>
+          </v-row>
+        </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
+import Api from '@/services/Api'
+import PrismEditor from 'vue-prism-editor'
 import 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
-import PrismEditor from 'vue-prism-editor'
-import Api from '@/services/Api'
+import MonacoEditor from 'monaco-editor-vue'
 
 export default {
   name: 'Exercise',
-  components: { PrismEditor },
+  components: { PrismEditor, MonacoEditor },
   props: {
     id: { type: String }
   },
@@ -35,7 +54,9 @@ export default {
       code: '',
       output: '',
       readme: '',
-      lineNumbers: false
+      options: {
+        tabCompletion: 'on'
+      }
     }
   },
   created: function() {
@@ -53,12 +74,13 @@ export default {
         this.output = data.join('\n')
       })
     }
-  }
+  },
+  updated: function() {}
 }
 </script>
 
 <style scoped>
-.code {
-  max-height: 400px;
+#code {
+  text-align: left;
 }
 </style>

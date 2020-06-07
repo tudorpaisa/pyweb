@@ -1,8 +1,16 @@
 <template>
-  <div id='exerciseCard'>
-    <h2 id='title' v-on:click='show()'>{{name}}</h2>
-    <p v-if='isActive'>{{description}}</p>
-    <p @click='go()'>Start</p>
+  <div id='exercise-card'>
+    <v-card class='mx-auto' max-width='680' outlined>
+      <v-list-item three-line>
+        <v-list-item-content>
+          <v-list-item-title class='headline mb-1'>{{name}}</v-list-item-title>
+          <v-list-item-subtitle>{{description}}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-card-actions>
+        <v-btn text @click='go()'>Start</v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
@@ -45,23 +53,7 @@ export default {
 </script>
 
 <style scoped>
-#exerciseCard {
-  display: block;
-  border-style: solid;
-  border-color: var(--base01);
-  border-radius: 15px;
-  border-width: 1px;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2em;
-  -webkit-box-shadow: 0px 0px 30px -15px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 30px -15px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 30px -15px rgba(0, 0, 0, 0.75);
-  text-align: center;
-}
-
-#title {
-  font-size: 1.2em;
+#exercise-card {
+  margin-top: 0.5em;
 }
 </style>

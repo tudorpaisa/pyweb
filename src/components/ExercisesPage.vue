@@ -1,7 +1,12 @@
 <template>
   <div>
-    <h1>Exercises</h1>
-    <p>There are {{nFiles}} exercises</p>
+    <v-row align='center' justify='center'>
+      <v-col class='text-center'>
+        <v-icon>mdi-language-python</v-icon>
+        <h1>Python Exercises</h1>
+        <p>There are {{nFiles}} exercises</p>
+      </v-col>
+    </v-row>
     <div v-for='exercise in exercises'>
       <ExerciseCard
         :name='exercise.name'
