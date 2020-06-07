@@ -38,14 +38,11 @@
 
 <script>
 import Api from '@/services/Api'
-import PrismEditor from 'vue-prism-editor'
-import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
 import MonacoEditor from 'monaco-editor-vue'
 
 export default {
   name: 'Exercise',
-  components: { PrismEditor, MonacoEditor },
+  components: { MonacoEditor },
   props: {
     id: { type: String }
   },
