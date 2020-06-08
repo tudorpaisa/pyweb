@@ -51,7 +51,6 @@ app.post("/load-script", (req, res) => {
 app.post("/run-script", (req, res, err) => {
     PythonShell.runString(req.body.code, null, function (err, results) {
         if (err) {
-            console.log(err.stack)
             res.json([err.stack])
         } else {
             res.json(results)
