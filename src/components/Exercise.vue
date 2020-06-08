@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row align='center' justify='center'>
-      <v-col class='text-center'>
+      <v-col class='text-left'>
         <div id='readme' v-html='readme'></div>
         <div id='code'>
           <v-row>
@@ -76,8 +76,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #code {
   text-align: left;
+}
+code {
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--base00) !important;
+  color: var(--base06) !important;
 }
 </style>
